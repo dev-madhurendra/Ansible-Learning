@@ -1,0 +1,8 @@
+- name: Play1
+  hosts: localhost
+  tasks:
+    - name: Execute 'date' command
+      ansible.builtin.command: date
+
+    - name: Execute script on server
+      ansible.builtin.script: setup.sh

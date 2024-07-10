@@ -1,0 +1,7 @@
+# gather_facts.yml
+- name: Gather and print facts
+  hosts: localhost
+  tasks:
+    - name: Print all available facts
+      ansible.builtin.debug:
+        var: ansible_facts

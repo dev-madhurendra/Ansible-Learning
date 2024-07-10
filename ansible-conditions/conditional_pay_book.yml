@@ -1,0 +1,14 @@
+- name: Conditional Hello World
+  hosts: localhost
+  tasks:
+    - name: Check OS distribution
+      ansible.builtin.debug:
+        msg: "Hello, World"
+      when:
+        - ansible_distribution == 'Ubuntu'
+
+    - name: Print Hello Us
+      ansible.builtin.debug:
+        msg: "Hello, Us"
+      when:
+        - ansible_distribution != 'Ubuntu'
