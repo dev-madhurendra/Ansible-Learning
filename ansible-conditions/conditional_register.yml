@@ -1,0 +1,19 @@
+- name: Conditional Execution Example
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Check if nginx is running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+      register: nginx_status
+
+    - name: Print nginx status
+      ansible.builtin.debug:
+        msg: "Nginx is {{ nginx_status.status }}"
+
+    - name: Restart nginx if it is not running
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+      when: nginx_status.status != 'started'

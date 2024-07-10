@@ -1,0 +1,10 @@
+- name: Ensure max_connections is set in config file
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Ensure max_connections line is present
+      ansible.builtin.lineinfile:
+        path: deni.txt
+        regexp: '^max_connections'
+        line: 'max_connections=100'
+        state: present

@@ -1,0 +1,25 @@
+- name: Conditional Loop Example
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    users:
+      - name: user1
+        role: admin
+      - name: user2
+        role: guest
+      - name: user3
+        role: admin
+
+  tasks:
+    - name: Print users with admin role
+      ansible.builtin.debug:
+        msg: "User {{ item.name }} has admin role."
+      loop: "{{ users }}"
+      when: item.role == 'admin'
+
+    - name: Print users with guest role
+      ansible.builtin.debug:
+        msg: "User {{ item.name }} has guest role."
+      loop: "{{ users }}"
+      when: item.role == 'guest'

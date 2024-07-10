@@ -5,10 +5,10 @@
       ansible.builtin.debug:
         msg: "Hello, World"
       when:
-        - ansible_distribution == 'Ubuntu'
+        - ansible_distribution == 'Ubuntu' 
 
     - name: Print Hello Us
       ansible.builtin.debug:
         msg: "Hello, Us"
       when:
-        - ansible_distribution != 'Ubuntu'
+        - ansible_distribution != 'Ubuntu' 
