@@ -1,0 +1,19 @@
+- name: Basic Linux setup
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Create a directory
+      ansible.builtin.file:
+        path: /tmp/example_dir
+        state: directory
+
+    - name: Write a message to a file
+      ansible.builtin.copy:
+        content: "Hello, Ansible!"
+        dest: /tmp/example_dir/message.txt
+
+    - name: Ensure cron service is running
+      ansible.builtin.service:
+        name: cron
+        state: started
+        enabled: true

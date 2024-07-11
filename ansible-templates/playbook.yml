@@ -1,0 +1,7 @@
+-
+  hosts: web_servers
+  tasks:
+    - name: Copy index.html to remote servers
+      template:
+        src: index.html.j2
+        dest: /var/www/nginx-default/index.html
